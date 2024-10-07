@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: create 3 instances with a security group that allows SSH between them.
+
+Parameters:
+  KeyName:
+    Description: KeyPair
+    Type: String
+    Default: ansible-key
+
+Resources:
+  AnsibleSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: Enable SSH between instances
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+        - IpProtocol: "-1"
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 0.0.0.0/0
+
+  AnsibleHostInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      SecurityGroups: 
+        - !Ref AnsibleSecurityGroup
+      KeyName: !Ref KeyName
+      ImageId: ami-03ceeb33c1e4abcd1
+      UserData: 
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo apt-add-repository ppa:ansible/ansible
+          sudo apt update
+          sudo apt install -y ansible
+
+  AnsibleServer1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      SecurityGroups: 
+        - !Ref AnsibleSecurityGroup
+      KeyName: !Ref KeyName
+      ImageId: ami-03ceeb33c1e4abcd1
+
+  AnsibleServer2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      SecurityGroups: 
+        - !Ref AnsibleSecurityGroup
+      KeyName: !Ref KeyName
+      ImageId: ami-03ceeb33c1e4abcd1
+
+Outputs:
+  AnsibleHostPublicIP:
+    Description: Public IP of host 
+    Value: !GetAtt AnsibleHostInstance.PublicIp
+  AnsibleServer1PublicIP:
+    Description: Public IP of server 1
+    Value: !GetAtt AnsibleServer1.PublicIp
+  AnsibleServer2PublicIP:
+    Description: Public IP of server 2
+    Value: !GetAtt AnsibleServer2.PublicIp
