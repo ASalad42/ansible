@@ -1,0 +1,78 @@
+---
+- name: Install Development Tools
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Update apt package index
+      apt:
+        update_cache: yes
+
+    - name: Install necessary packages
+      apt:
+        name:
+          - docker.io
+          - unzip
+          - curl
+          - snapd
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: latest
+
+    - name: Add current user to the docker group
+      user:
+        name: "{{ ansible_user_id }}"
+        group: docker
+        append: yes
+
+    - name: Restart Docker service
+      service:
+        name: docker
+        state: restarted
+
+    - name: Install AWS CLI
+      shell: |
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        unzip awscliv2.zip
+        sudo ./aws/install
+      args:
+        chdir: /tmp
+      register: aws_cli_install
+      failed_when: aws_cli_install.rc != 0
+
+    - name: Install kubectl
+      shell: |
+        curl -LO "https://dl.k8s.io/release/v1.28.4/bin/linux/amd64/kubectl"
+        chmod +x kubectl
+        mv kubectl /usr/local/bin/
+        kubectl version --client
+      args:
+        chdir: /tmp
+      register: kubectl_install
+      failed_when: kubectl_install.rc != 0
+
+    - name: Install eksctl
+      shell: |
+        curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        mv /tmp/eksctl /usr/local/bin
+        eksctl version
+      register: eksctl_install
+      failed_when: eksctl_install.rc != 0
+
+    - name: Install Terraform
+      shell: |
+        wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
+        apt update
+        apt install terraform -y
+      register: terraform_install
+      failed_when: terraform_install.rc != 0
+
+    - name: Install Helm
+      shell: |
+        snap install helm --classic
+      register: helm_install
+      failed_when: helm_install.rc != 0
+
