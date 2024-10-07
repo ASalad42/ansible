@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: create 3 instances with a security group that allows SSH between them.
+Description: create 3 instances with a security group that allows SSH between them
 
 Parameters:
   KeyName:
