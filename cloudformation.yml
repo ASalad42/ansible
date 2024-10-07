@@ -28,7 +28,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
-      SecurityGroups: 
+      SecurityGroupIds: 
         - !Ref AnsibleSecurityGroup
       KeyName: !Ref KeyName
       ImageId: ami-0a422d70f727fe93e
@@ -43,7 +43,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
-      SecurityGroups: 
+      SecurityGroupIds: 
         - !Ref AnsibleSecurityGroup
       KeyName: !Ref KeyName
       ImageId: ami-0a422d70f727fe93e
@@ -52,7 +52,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
-      SecurityGroups: 
+      SecurityGroupIds: 
         - !Ref AnsibleSecurityGroup
       KeyName: !Ref KeyName
       ImageId: ami-0a422d70f727fe93e
