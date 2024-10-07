@@ -31,7 +31,7 @@ Resources:
       SecurityGroups: 
         - !Ref AnsibleSecurityGroup
       KeyName: !Ref KeyName
-      ImageId: ami-03ceeb33c1e4abcd1
+      ImageId: ami-0a422d70f727fe93e
       UserData: 
         Fn::Base64: !Sub |
           #!/bin/bash
@@ -46,7 +46,7 @@ Resources:
       SecurityGroups: 
         - !Ref AnsibleSecurityGroup
       KeyName: !Ref KeyName
-      ImageId: ami-03ceeb33c1e4abcd1
+      ImageId: ami-0a422d70f727fe93e
 
   AnsibleServer2:
     Type: AWS::EC2::Instance
@@ -55,7 +55,7 @@ Resources:
       SecurityGroups: 
         - !Ref AnsibleSecurityGroup
       KeyName: !Ref KeyName
-      ImageId: ami-03ceeb33c1e4abcd1
+      ImageId: ami-0a422d70f727fe93e
 
 Outputs:
   AnsibleHostPublicIP:
