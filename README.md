@@ -23,6 +23,10 @@
 - ![image](https://github.com/user-attachments/assets/70132bd4-c90c-4dd1-b988-62eec96f7ba5)
 - ansible-playbook web.yml
 - ![image](https://github.com/user-attachments/assets/0be0e1d1-aaad-4818-80e7-390ba45bc088)
+- ![image](https://github.com/user-attachments/assets/6e202823-e4c7-40f4-aa9a-612789b0411f)
+- ![image](https://github.com/user-attachments/assets/71014198-cd95-45ce-add6-e9be6b51d625)
+
+
 
 
 
