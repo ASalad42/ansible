@@ -12,6 +12,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties: 
       GroupDescription: Enable SSH between instances
+      VpcId: vpc-064d1f3e6a9033bfa
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 22
