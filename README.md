@@ -1,6 +1,6 @@
 # Ansible
 
-![image](https://github.com/user-attachments/assets/e1d97e65-7c9a-4da2-87af-e4733ceacf39)
+![image](https://github.com/user-attachments/assets/3ed2f0fe-9972-4773-aab5-4f9e1765ffbf)
 
 
 - Control node: server which has ansible installed 
