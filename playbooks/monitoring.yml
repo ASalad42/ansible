@@ -1,0 +1,15 @@
+- name: Install Monitoring stack (targets)
+  hosts: target
+  tags:
+    - monitoring
+    - target
+  roles:
+    - ../roles/target
+
+- name: Install Monitoring stack (controller)
+  hosts: controller
+  tags:
+    - monitoring
+    - controller
+  roles:
+    - ../roles/controller

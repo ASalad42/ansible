@@ -15,5 +15,5 @@
 
    - name: Deploy webpage
      copy: 
-       src: index.html
+       src: ../index.html
        dest: /var/www/html 
