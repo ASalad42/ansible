@@ -6,9 +6,11 @@
 - Control node: server which has ansible installed 
 - Managed nodes: remote hosts/servers which are configured 
 - two ways to configure in ansible: Ad-hoc commands (Command-line) or Playbooks
-- Tasks: things  that need to be configured on remote servers (using playbooks). playbook have hosts, play name and tasks. 
-- The remote servers or hosts which need to be configured are in the Inventory. 
+- Tasks: things  that need to be configured on remote servers. playbook have hosts, roles, tags,  play name and tasks directly or within the roles.
+- Roles help organize your playbook into reusable components. Each role can contain tasks, files, templates, handlers, variables, and other necessary resource
+- The remote servers or hosts which need to be configured are in inventories. 
 - Dynamic Inventory: used if hosts are running on top of the cloud or in a container engine where the hosts are up and down frequently
+- To put it simply: The playbook calls a role. Inside the role, the tasks/main.yml file is automatically executed. Tasks inside the tasks/main.yml define specific actions like installing software or configuring services.
 
 ## Set up Ansible Stack
 ![image](https://github.com/user-attachments/assets/e39a904b-1532-4155-b2f1-12de277277a4)
@@ -51,7 +53,7 @@
   roles:
     - ../roles/controller
 ````
-- When Ansible encounters the role ../roles/controller, it looks inside the controller role directory for a default task file in the tasks folder. By default, this task file is named main.yml. If found, Ansible automatically executes the tasks defined inside this main.yml file.
+- When Ansible encounters the role ../roles/controller, it looks inside the controller role directory for a default task file in the task folder. By default, this task file is named main.yml. If found, Ansible automatically executes the tasks defined inside this main.yml file.
 - So when role is defined ../roles/controller - Ansible will look inside ../roles/controller/task/main.yml
 - `-t controller` - Execute the tasks tagged with controller, meaning only the controller role-related tasks will be run.
 - ansible-playbook -i ansible/inventories/hosts.yml -u TheUserToExecuteWith ansible/playbooks/monitoring.yml -t target --ask-vault-pass
