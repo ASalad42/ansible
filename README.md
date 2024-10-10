@@ -70,6 +70,37 @@
 
 - when role is defined ../roles/target - Ansible will look inside ../roles/target/task/main.yml
 
+- inside the task files main.yml for each role: Ansible automatically looks for the src file in the respective files directory of the role (in this case, ansible/roles/controller/files/). So no need to specify the full path; just using prometheus.yml is sufficient.
+- once the coniguration files are copied to the servers using the copy command they are mounted to the containers at the specified locations.
+
+```.yaml
+- name: Create prometheus configuration file
+  copy:
+    dest: /srv/prometheus/prometheus.yml
+    src: prometheus.yml  
+    mode: 0644
+
+
+- name: Create Prometheus container
+  docker_container:
+    name: prometheus
+    restart_policy: always
+    image: prom/prometheus:latest
+    volumes:
+      - /srv/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /srv/prometheus/prometheus_alerts.yml:/etc/prometheus/prometheus_alerts.yml
+      - prometheus_main_data:/prometheus
+    command: >
+      --config.file=/etc/prometheus/prometheus.yml
+      --storage.tsdb.path=/prometheus
+      --web.console.libraries=/etc/prometheus/console_libraries
+      --web.console.templates=/etc/prometheus/consoles
+      --web.enable-lifecycle
+    published_ports: "9090:9090"
+
+```
+
+
 
 
 
