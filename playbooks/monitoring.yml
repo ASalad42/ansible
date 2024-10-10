@@ -1,5 +1,6 @@
 - name: Install Monitoring stack (targets)
   hosts: target
+  become: true
   tags:
     - monitoring
     - target
@@ -8,6 +9,7 @@
 
 - name: Install Monitoring stack (controller)
   hosts: controller
+  become: true
   tags:
     - monitoring
     - controller
