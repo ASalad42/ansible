@@ -41,8 +41,34 @@
 
 - ansible-vault encrypt_string "password" --ask-vault-pass
 - ansible-playbook -i ansible/inventories/hosts.yml -u TheUserToExecuteWith ansible/playbooks/monitoring.yml -t controller --ask-vault-pass
+
+```.yaml
+- name: Install Monitoring stack (controller)
+  hosts: controller
+  tags:
+    - monitoring
+    - controller
+  roles:
+    - ../roles/controller
+````
+- When Ansible encounters the role ../roles/controller, it looks inside the controller role directory for a default task file in the tasks folder. By default, this task file is named main.yml. If found, Ansible automatically executes the tasks defined inside this main.yml file.
+- So when role is defined ../roles/controller - Ansible will look inside ../roles/controller/task/main.yml
+- `-t controller` - Execute the tasks tagged with controller, meaning only the controller role-related tasks will be run.
 - ansible-playbook -i ansible/inventories/hosts.yml -u TheUserToExecuteWith ansible/playbooks/monitoring.yml -t target --ask-vault-pass
 
+```.yaml
+
+- name: Install Monitoring stack (targets)
+  hosts: target
+  tags:
+    - monitoring
+    - target
+  roles:
+    - ../roles/target
+
+```
+
+- when role is defined ../roles/target - Ansible will look inside ../roles/target/task/main.yml
 
 
 
