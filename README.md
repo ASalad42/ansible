@@ -42,6 +42,7 @@
 
 ## Using Ansible - setup server monitoring with Prometheus and Grafana 
 
+- ensure docker is installed on host and 2 servers using dev.yml playbook
 - ansible-vault encrypt_string "password" --ask-vault-pass
 - ansible-playbook -i ansible/inventories/hosts.yml -u TheUserToExecuteWith ansible/playbooks/monitoring.yml -t controller --ask-vault-pass
 
@@ -103,6 +104,13 @@
 
 ```
 
+
+- ansible-playbook -i ansible/inventories/hosts.yml -u TheUserToExecuteWith ansible/playbooks/monitoring.yml -t controller --ask-vault-pass
+- put in vault password
+- ![image](https://github.com/user-attachments/assets/bc5ab273-8f3f-4300-8823-d8cfd7dfa253)
+- ![image](https://github.com/user-attachments/assets/a01b332d-e29e-4971-9ab5-94b90e96d75f)
+- ansible-playbook -i ansible/inventories/hosts.yml -u TheUserToExecuteWith ansible/playbooks/monitoring.yml -t target --ask-vault-pass
+- put in vault password
 
 
 
