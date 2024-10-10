@@ -111,6 +111,10 @@
 - ![image](https://github.com/user-attachments/assets/a01b332d-e29e-4971-9ab5-94b90e96d75f)
 - ansible-playbook -i ansible/inventories/hosts.yml -u TheUserToExecuteWith ansible/playbooks/monitoring.yml -t target --ask-vault-pass
 - put in vault password
+- ![image](https://github.com/user-attachments/assets/f395987a-0d29-4b28-ba9a-f6bdd839b052)
+- ![image](https://github.com/user-attachments/assets/8a0eaa87-7efb-48e8-a4ff-fef100ddbdb7)
+
+
 
 
 
