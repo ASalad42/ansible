@@ -113,6 +113,10 @@
 - put in vault password
 - ![image](https://github.com/user-attachments/assets/f395987a-0d29-4b28-ba9a-f6bdd839b052)
 - ![image](https://github.com/user-attachments/assets/8a0eaa87-7efb-48e8-a4ff-fef100ddbdb7)
+- ![image](https://github.com/user-attachments/assets/ac3bc43c-2bb6-4f96-9e4a-fb78a9ef37bd)
+- ![image](https://github.com/user-attachments/assets/7986f0cd-e48f-4ea6-92fe-626660604f49)
+- ![image](https://github.com/user-attachments/assets/2ae95ad9-644e-47c0-a57b-b1a749fa639f)
+
 
 
 
