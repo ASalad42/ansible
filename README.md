@@ -11,6 +11,7 @@
 - The remote servers or hosts which need to be configured are in inventories. 
 - Dynamic Inventory: used if hosts are running on top of the cloud or in a container engine where the hosts are up and down frequently
 - To put it simply: The playbook calls a role. Inside the role, the tasks/main.yml file is automatically executed. Tasks inside the tasks/main.yml define specific actions like installing software or configuring services.
+- https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#directory-layout
 
 ## Set up Ansible Stack
 ![image](https://github.com/user-attachments/assets/e39a904b-1532-4155-b2f1-12de277277a4)
