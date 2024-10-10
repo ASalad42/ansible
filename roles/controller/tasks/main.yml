@@ -20,7 +20,7 @@
 - name: Create prometheus configuration file
   copy:
     dest: /srv/prometheus/prometheus.yml
-    src: prometheus.yml
+    src: prometheus.yml # copying a single file named prometheus.yml from the files directory of the controller role.
     mode: 0644
 
 - name: Create prometheus alert configuration file
@@ -32,7 +32,7 @@
 - name: Create grafana configuration files
   copy:
     dest: /srv/
-    src: grafana
+    src: grafana # copy entire directory from the files directory of the controller role.
     mode: 0644
 
 - name: Create alertmanager configuration file
@@ -65,8 +65,8 @@
     image: grafana/grafana:latest
     volumes:
       - grafana-data:/var/lib/grafana
-      - /srv/grafana/provisioning:/etc/grafana/provisioning
-      - /srv/grafana/dashboards:/var/lib/grafana/dashboards
+      - /srv/grafana/provisioning:/etc/grafana/provisioning # mounts the provisioning directory in the container, allowing Grafana to access the dashboards and data sources defined in YAML files.
+      - /srv/grafana/dashboards:/var/lib/grafana/dashboards # mounts the dashboards directory, making the JSON dashboard files accessible to Grafana
     env:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
