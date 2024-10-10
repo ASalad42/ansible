@@ -19,7 +19,7 @@
 ![image](https://github.com/user-attachments/assets/4f62bd5d-cff7-44c9-9727-99688e8239ff)
 
 
-- scp -i C:\Users\AyanleSalad\.ssh\ansible-key.pem C:\Users\AyanleSalad\.ssh\ansible-key.pem ubuntu@52.215.75.9:/home/ubuntu/.ssh/
+- scp -i C:/Users/AyanleSalad/.ssh/ansible-key.pem C:/Users/AyanleSalad/.ssh/ansible-key.pem ubuntu@54.229.146.5:/home/ubuntu/.ssh/
 - ![image](https://github.com/user-attachments/assets/fb8174ae-4332-4960-bcf7-44409af8381b)
 - sudo nano /etc/ansible/hosts
 - chmod 600 /home/ubuntu/.ssh/ansible-key.pem
