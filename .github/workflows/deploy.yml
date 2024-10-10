@@ -3,7 +3,7 @@ name: Deploy Ansible Stack
 on:
   push:
     branches:
-      - tmp # use tmp to stop builds temporarily
+      - main
 
 jobs:
   deploy:
