@@ -2,7 +2,6 @@
 
 ![image](https://github.com/user-attachments/assets/c7b133ea-5d25-4c39-927d-1911da8bcc9d)
 
-
 - Control node: server which has ansible installed 
 - Managed nodes: remote hosts/servers which are configured 
 - two ways to configure in ansible: Ad-hoc commands (Command-line) or Playbooks
